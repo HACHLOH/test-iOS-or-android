@@ -1,0 +1,78 @@
+chcp 1251
+cls
+@echo off
+
+echo Приветствую Вас в моей программе, которая поможет Вам определится с выбором ОС для мобильного устройства.
+
+
+
+:menu
+
+echo 1. Начать тестирование
+echo 2. Об авторе проекта
+echo 3. Выйти
+set /p ansm=Введите номер действия:
+if '%ansm%'=='1' (goto test)
+if '%ansm%'=='2' (goto me)
+if %ansm%==3 (goto exit)
+
+
+
+:test
+
+cls
+set result=0
+
+echo 1) Насколько часто Вы собираетесь работать с файлами?
+echo а) Часто б) Иногда в) Изредко
+set /p anst=Введите ваш ответ:
+if '%anst%'=='а' set /a result+=1
+if '%anst%'=='в' set /a result-=1
+
+echo 2) Собираетесь ли Вы программировать?
+echo а) Да б) Нет
+set /p anst=Введите ваш ответ:
+if '%anst%'=='а' set /a result+=1
+if '%anst%'=='б' set /a result-=1
+
+echo 3) Будете ли Вы эмулировать другие ОС (Linux, Windows, DOS и т.п.)?
+echo а) Да б) Нет
+set /p anst=Введите ваш ответ:
+if '%anst%'=='а' set /a result+=1
+if '%anst%'=='б' set /a result-=1
+
+echo 4) Как Вы разбираетесь в информационной безопасности?
+echo а) Хорошо б) Средне в) Не разбираюсь
+set /p anst=Введите ваш ответ:
+if '%anst%'=='а' set /a result+=1
+if '%anst%'=='в' set /a result-=1
+
+echo 5) Будете ли Вы кастомизировать своё устройство?
+echo а) Да б) Возможно в)  Нет
+set /p anst=Введите ваш ответ:
+if '%anst%'=='а' set /a result+=1
+if '%anst%'=='в' set /a result-=1
+
+if %result% gtr 0 (echo Вам лучше всего подходит ОС android.)
+if %result% equ 0 (echo Вам подходят обе ОС.)
+if %result% lss 0 (echo Вам лучше подходит IOS.)
+pause
+cls
+goto menu
+
+
+
+:me
+
+cls
+
+echo Программу написал Хоченков Даниил Дмитриевич, ученик 9 А класса 530 школы.
+
+pause
+cls
+goto menu
+
+
+
+:exit
+exit
